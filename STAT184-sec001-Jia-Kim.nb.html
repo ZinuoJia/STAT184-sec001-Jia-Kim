@@ -1773,14 +1773,43 @@ library(readr)</code></pre>
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
 <!-- rnb-chunk-begin -->
-<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI1NvdXJjZSBkYXRhIFwidmdzYWxlcy5jc3ZcIiBkb3dubG9hZGVkIGZyb20gXCJLYWdnbGUuY29tL2RhdGFzZXRcIlxucmVhZC5jc3YodmdzYWxlcy5jc3YpXG5gYGAifQ== -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI1NvdXJjZSBkYXRhIFwidmdzYWxlcy5jc3ZcIiBkb3dubG9hZGVkIGZyb20gXCJLYWdnbGUuY29tL2RhdGFzZXRcIlxudmdzYWxlcyA8LSByZWFkX2NzdihcInZnc2FsZXMuY3N2XCIpXG5gYGAifQ== -->
 <pre class="r"><code>#Source data &quot;vgsales.csv&quot; downloaded from &quot;Kaggle.com/dataset&quot;
-read.csv(vgsales.csv)</code></pre>
+vgsales &lt;- read_csv(&quot;vgsales.csv&quot;)</code></pre>
 <!-- rnb-source-end -->
-<!-- rnb-output-begin eyJkYXRhIjoiRXJyb3IgaW4gcmVhZC50YWJsZShmaWxlID0gZmlsZSwgaGVhZGVyID0gaGVhZGVyLCBzZXAgPSBzZXAsIHF1b3RlID0gcXVvdGUsICA6IFxuICBvYmplY3QgJ3Znc2FsZXMuY3N2JyBub3QgZm91bmRcbiJ9 -->
-<pre><code>Error in read.table(file = file, header = header, sep = sep, quote = quote,  : 
-  object &#39;vgsales.csv&#39; not found</code></pre>
+<!-- rnb-output-begin eyJkYXRhIjoiUGFyc2VkIHdpdGggY29sdW1uIHNwZWNpZmljYXRpb246XG5jb2xzKFxuICBSYW5rID0gXHUwMDFiWzMybWNvbF9kb3VibGUoKVx1MDAxYlszOW0sXG4gIE5hbWUgPSBcdTAwMWJbMzFtY29sX2NoYXJhY3RlcigpXHUwMDFiWzM5bSxcbiAgUGxhdGZvcm0gPSBcdTAwMWJbMzFtY29sX2NoYXJhY3RlcigpXHUwMDFiWzM5bSxcbiAgWWVhciA9IFx1MDAxYlszMW1jb2xfY2hhcmFjdGVyKClcdTAwMWJbMzltLFxuICBHZW5yZSA9IFx1MDAxYlszMW1jb2xfY2hhcmFjdGVyKClcdTAwMWJbMzltLFxuICBQdWJsaXNoZXIgPSBcdTAwMWJbMzFtY29sX2NoYXJhY3RlcigpXHUwMDFiWzM5bSxcbiAgTkFfU2FsZXMgPSBcdTAwMWJbMzJtY29sX2RvdWJsZSgpXHUwMDFiWzM5bSxcbiAgRVVfU2FsZXMgPSBcdTAwMWJbMzJtY29sX2RvdWJsZSgpXHUwMDFiWzM5bSxcbiAgSlBfU2FsZXMgPSBcdTAwMWJbMzJtY29sX2RvdWJsZSgpXHUwMDFiWzM5bSxcbiAgT3RoZXJfU2FsZXMgPSBcdTAwMWJbMzJtY29sX2RvdWJsZSgpXHUwMDFiWzM5bSxcbiAgR2xvYmFsX1NhbGVzID0gXHUwMDFiWzMybWNvbF9kb3VibGUoKVx1MDAxYlszOW1cbilcbiJ9 -->
+<pre><code>Parsed with column specification:
+cols(
+  Rank = [32mcol_double()[39m,
+  Name = [31mcol_character()[39m,
+  Platform = [31mcol_character()[39m,
+  Year = [31mcol_character()[39m,
+  Genre = [31mcol_character()[39m,
+  Publisher = [31mcol_character()[39m,
+  NA_Sales = [32mcol_double()[39m,
+  EU_Sales = [32mcol_double()[39m,
+  JP_Sales = [32mcol_double()[39m,
+  Other_Sales = [32mcol_double()[39m,
+  Global_Sales = [32mcol_double()[39m
+)</code></pre>
 <!-- rnb-output-end -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxuI2xvYWQgc291cmNlIGRhdGEgXCJ2Z2NvbnNvbGVcIiBmcm9tIFwiaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvTGlzdF9vZl9iZXN0LXNlbGxpbmdfZ2FtZV9jb25zb2xlc1wiIFxucGFnZSA8LSBcImh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93aWtpL0xpc3Rfb2ZfYmVzdC1zZWxsaW5nX2dhbWVfY29uc29sZXNcIiBcbnRhYmxlTGlzdCA8LSBwYWdlICU+JVxuICByZWFkX2h0bWwoKSAlPiVcbiAgaHRtbF9ub2Rlcyhjc3MgPSBcInRhYmxlXCIpICU+JVxuICBodG1sX3RhYmxlKGZpbGwgPSBUUlVFKVxudmdjb25zb2xlPC10YWJsZUxpc3RbWzFdXVxuaGVhZCh2Z2NvbnNvbGUpXG5gYGAifQ== -->
+<pre class="r"><code>#load source data &quot;vgconsole&quot; from &quot;https://en.wikipedia.org/wiki/List_of_best-selling_game_consoles&quot; 
+page &lt;- &quot;https://en.wikipedia.org/wiki/List_of_best-selling_game_consoles&quot; 
+tableList &lt;- page %&gt;%
+  read_html() %&gt;%
+  html_nodes(css = &quot;table&quot;) %&gt;%
+  html_table(fill = TRUE)
+vgconsole&lt;-tableList[[1]]
+head(vgconsole)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-frame-begin eyJtZXRhZGF0YSI6eyJjbGFzc2VzIjpbImRhdGEuZnJhbWUiXSwibmNvbCI6NSwibnJvdyI6Nn0sInJkZiI6Ikg0c0lBQUFBQUFBQUJuVlQzVTdDTUJRdURDYU1BQ2JlZUxrSGdHWXRQN0liTDRUb25TRVFJd25ob3JLaWk2VTFXNGx5eDZQNExENFkybzBWeHNBbFRiL3puZk9kbjdVZERTWXRhMklCQUF4Z21EbGdGQlVFWm4rSWNBY0RVTWdyS3djS29CenRYeXJxU29FbzVqSUtTeHpWSVNQcnNTVFNGOXpHQ1ZsNTlMbWszQlAyWUp4UTF3OWtTZTA3c1c3WUd0bDl3VVJ3TGs5YjUwbVJDV1U4KzM2bWhjSlk4SFdDUzdyeVAzWTY5cnd1a3hzN2pwUEN1ak1MdVQyM1lTUFg3UjI4cUtXeDR0c3BWWGVmRld6aVlXOVJwL1B6dmZRWml5YmJrWFhVYVVNSG45S29CN3R1bHE0aEI4UGVhYkJpMnlmQmlrYXcyMHJSUjBPV3BseElhcU9aYm5tS2JtYkhQbnp3NFZSY0N4OXJqaTlOa2F1VERwTmlSWjFRbmFsY2lHQ3BoZmYrSGxkR2xGRVNVbSs2ejJzOWNWK0dkaWlZcHdVanVvQ1pTdVZBZkVKZHJhcFdmZ1Bpejh5Mk5HY2sxQzFwMHZLSUpIQVJLTDJ5dGhuSmhmaUk3cDhTNWRNUFlQOHlnZ3hSWC9Hb0U2ODVmMXZ4OTJaMDlsYnMzcTFxc3BzcFhOeVZ6UDltL3BWSithdlBxZTZka1JmS0VxT21KbzRIaGgrQnVycDZFc1dHVUFwSmRKdzFGMHd6OFd4Zyt3ZWpNWVQxK0FNQUFBPT0ifQ== -->
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Platform"],"name":[1],"type":["chr"],"align":["left"]},{"label":["Firm"],"name":[2],"type":["chr"],"align":["left"]},{"label":["Released[2]"],"name":[3],"type":["chr"],"align":["left"]},{"label":["Units sold"],"name":[4],"type":["chr"],"align":["left"]},{"label":["Ref."],"name":[5],"type":["chr"],"align":["left"]}],"data":[{"1":"PlayStation 2","2":"Sony","3":"2000","4":">155 million","5":"[note 1]","_rn_":"1"},{"1":"Nintendo DS","2":"Nintendo","3":"2004","4":"154.02 million","5":"[17]","_rn_":"2"},{"1":"Game Boy, Game Boy Color","2":"Nintendo","3":"1989, 1998","4":"118.69 million","5":"[note 2]","_rn_":"3"},{"1":"PlayStation 4","2":"Sony","3":"2013","4":"102.8 million","5":"[21]","_rn_":"4"},{"1":"PlayStation","2":"Sony","3":"1994","4":"102.49 million","5":"[32]","_rn_":"5"},{"1":"Wii","2":"Nintendo","3":"2006","4":"101.63 million","5":"[17]","_rn_":"6"}],"options":{"columns":{"min":{},"max":[10],"total":[5]},"rows":{"min":[10],"max":[10],"total":[6]},"pages":{}}}
+  </script>
+</div>
+<!-- rnb-frame-end -->
 <!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
@@ -1789,7 +1818,7 @@ read.csv(vgsales.csv)</code></pre>
 <!-- rnb-text-end -->
 </div>
 
-<div id="rmd-source-code">LS0tDQp0aXRsZTogIlNUQVQgMTg0IEZpbmFsIFByb2plY3QiDQphdXRob3I6ICJaaW51byBKaWEsIEFsZXhhbmRlciBLaW0iDQpkYXRlOiAiMTIvMTcvMjAxOSINCm91dHB1dDogaHRtbF9ub3RlYm9vaw0KLS0tDQoNCg0KIyMjIEZyb250IE1hdHRlcg0KDQpgYGB7cn0NCiMgY2xlYW4gdXAgdGhlIFJTdHVkaW8gZW52aXJvbm1lbnQgDQpybShsaXN0ID0gbHMoKSkNCiMgbG9hZCBhbGwgcGFja2FnZXMgbmVlZGVkDQpsaWJyYXJ5KG1vc2FpYykNCmxpYnJhcnkoRGF0YUNvbXB1dGluZykNCmxpYnJhcnkodGlkeXZlcnNlKQ0KbGlicmFyeShsdWJyaWRhdGUpDQpsaWJyYXJ5KGxlYWZsZXQpDQpsaWJyYXJ5KHJ2ZXN0KQ0KbGlicmFyeShyZWFkcikNCmBgYA0KDQpgYGB7cn0NCiNTb3VyY2UgZGF0YSAidmdzYWxlcy5jc3YiIGRvd25sb2FkZWQgZnJvbSAiS2FnZ2xlLmNvbS9kYXRhc2V0Ig0KDQojbG9hZCBzb3VyY2UgZGF0YSAidmdjb25zb2xlIiBmcm9tICJodHRwczovL2VuLndpa2lwZWRpYS5vcmcvd2lraS9MaXN0X29mX2Jlc3Qtc2VsbGluZ19nYW1lX2NvbnNvbGVzIiANCnBhZ2UgPC0gImh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93aWtpL0xpc3Rfb2ZfYmVzdC1zZWxsaW5nX2dhbWVfY29uc29sZXMiIA0KdGFibGVMaXN0IDwtIHBhZ2UgJT4lDQogIHJlYWRfaHRtbCgpICU+JQ0KICBodG1sX25vZGVzKGNzcyA9ICJ0YWJsZSIpICU+JQ0KICBodG1sX3RhYmxlKGZpbGwgPSBUUlVFKQ0Kdmdjb25zb2xlPC10YWJsZUxpc3RbWzFdXQ0KaGVhZCh2Z2NvbnNvbGUpDQpgYGANCg0KIyMjIEludHJvZHVjdGlvbiAgDQoNCg0K</div>
+<div id="rmd-source-code">LS0tDQp0aXRsZTogIlNUQVQgMTg0IEZpbmFsIFByb2plY3QiDQphdXRob3I6ICJaaW51byBKaWEsIEFsZXhhbmRlciBLaW0iDQpkYXRlOiAiMTIvMTcvMjAxOSINCm91dHB1dDogaHRtbF9ub3RlYm9vaw0KLS0tDQoNCg0KIyMjIEZyb250IE1hdHRlcg0KDQpgYGB7cn0NCiMgY2xlYW4gdXAgdGhlIFJTdHVkaW8gZW52aXJvbm1lbnQgDQpybShsaXN0ID0gbHMoKSkNCiMgbG9hZCBhbGwgcGFja2FnZXMgbmVlZGVkDQpsaWJyYXJ5KG1vc2FpYykNCmxpYnJhcnkoRGF0YUNvbXB1dGluZykNCmxpYnJhcnkodGlkeXZlcnNlKQ0KbGlicmFyeShsdWJyaWRhdGUpDQpsaWJyYXJ5KGxlYWZsZXQpDQpsaWJyYXJ5KHJ2ZXN0KQ0KbGlicmFyeShyZWFkcikNCmBgYA0KDQpgYGB7cn0NCiNTb3VyY2UgZGF0YSAidmdzYWxlcy5jc3YiIGRvd25sb2FkZWQgZnJvbSAiS2FnZ2xlLmNvbS9kYXRhc2V0Ig0KI3Znc2FsZXMuY3N2IGFscmVhZHkgdXBsb2FkZWQgaW4gdGhlIHJlcG8NCnZnc2FsZXMgPC0gcmVhZF9jc3YoInZnc2FsZXMuY3N2IikNCiNsb2FkIHNvdXJjZSBkYXRhICJ2Z2NvbnNvbGUiIGZyb20gImh0dHBzOi8vZW4ud2lraXBlZGlhLm9yZy93aWtpL0xpc3Rfb2ZfYmVzdC1zZWxsaW5nX2dhbWVfY29uc29sZXMiIA0KcGFnZSA8LSAiaHR0cHM6Ly9lbi53aWtpcGVkaWEub3JnL3dpa2kvTGlzdF9vZl9iZXN0LXNlbGxpbmdfZ2FtZV9jb25zb2xlcyIgDQp0YWJsZUxpc3QgPC0gcGFnZSAlPiUNCiAgcmVhZF9odG1sKCkgJT4lDQogIGh0bWxfbm9kZXMoY3NzID0gInRhYmxlIikgJT4lDQogIGh0bWxfdGFibGUoZmlsbCA9IFRSVUUpDQp2Z2NvbnNvbGU8LXRhYmxlTGlzdFtbMV1dDQpoZWFkKHZnY29uc29sZSkNCmBgYA0KDQojIyMgSW50cm9kdWN0aW9uICANCg0KDQo=</div>
 
 
 

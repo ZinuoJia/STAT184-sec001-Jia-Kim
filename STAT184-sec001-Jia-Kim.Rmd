@@ -23,7 +23,8 @@ library(readr)
 
 ```{r}
 #Source data "vgsales.csv" downloaded from "Kaggle.com/dataset"
-
+#vgsales.csv already uploaded in the repo
+vgsales <- read_csv("vgsales.csv")
 #load source data "vgconsole" from "https://en.wikipedia.org/wiki/List_of_best-selling_game_consoles" 
 page <- "https://en.wikipedia.org/wiki/List_of_best-selling_game_consoles" 
 tableList <- page %>%
