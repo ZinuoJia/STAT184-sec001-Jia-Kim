@@ -21,6 +21,7 @@ library(rvest)
 library(readr)
 ```
 
+Importing Data
 ```{r}
 #Source data "vgsales.csv" downloaded from "Kaggle.com/dataset"
 #vgsales.csv already uploaded in the repo
@@ -33,6 +34,7 @@ tableList <- page %>%
   html_table(fill = TRUE)
 vgconsole<-tableList[[1]]
 head(vgconsole)
+head(vgsales)
 ```
 
 ### Introduction  
