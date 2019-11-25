@@ -33,10 +33,28 @@ tableList <- page %>%
   html_nodes(css = "table") %>%
   html_table(fill = TRUE)
 vgconsole<-tableList[[1]]
+vgconsole$Ref. <- NULL #took out the Ref. column that has no value
 head(vgconsole)
 head(vgsales)
 ```
 
 ### Introduction  
+Seeing which platform had the greatest sale and within each platform what was the greatest sold game 
+```{r}
+ggplot(data=vgsales, aes(x=reorder(Platform, -Global_Sales),y=Global_Sales)) + #reorder isnt working?
+  geom_bar(stat='identity',position='stack', width=.9) +
+  theme(axis.text.x=element_text(angle=60,hjust=1)) +xlab("Platform") + ylab("Global Sales")
+```
 
+
+Most Sold Game
+```{r}
+sold <- vgsales %>%
+  group_by(Platform) %>%
+  filter(rank(desc(Global_Sales))==1)
+  
+ggplot(data=sold, aes(x=reorder(Name,-Global_Sales),y=Global_Sales )) + geom_bar(stat='identity',position='stack', width=.9) + theme(axis.text.x=element_text(angle=60,hjust=1)) + xlab("Game Title") + ylab("Global Sales")
+
+
+```
 
