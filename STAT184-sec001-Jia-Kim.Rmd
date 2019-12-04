@@ -78,6 +78,7 @@ PlatformAbb <-
   group_by(Platform)%>%
   summarise(count = n())%>%
   select(Platform)
+names(PlatformAbb) <- "PlatformAbb"
 PlatformAbb
 ```
 
