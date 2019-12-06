@@ -84,7 +84,8 @@ PlatformAbb
 
 
 ```{r}
-Platform2 <- PlatformAbb %>%
+Platform2 <- 
+  PlatformAbb %>%
   mutate(Platform = c("Atari 2600","3D0 Interactive Multiplayer","Nintendo 3DS", "Dreamcast","Nintendo DS", "Game Boy","Game Boy Advance", "GameCube","Sega Genesis", "Sega Game Gear","Nintendo 64", "Nintendo Entertainment System","Neo Geo", "Personal Computer","NEC PC-FX", "PlayStation","PlayStation 2", "PlayStation 3","PlayStation 4", "PlayStation Portable","PlayStation Vita", "Sega Saturn","Nintendo Supplemental Computing Device", "Super Nintendo Enteratainment System","TurboGrafx-16", "Wii","Wii U", "WonderSwan","Xbox 360", "Xbox","Xbox One"))
 View(Platform2)
 ```
