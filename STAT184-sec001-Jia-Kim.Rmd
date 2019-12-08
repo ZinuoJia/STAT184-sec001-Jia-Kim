@@ -19,6 +19,7 @@ library(lubridate)
 library(leaflet)
 library(rvest)
 library(readr)
+
 ```
 
 Importing Data
@@ -176,14 +177,26 @@ summary(MLR)
 Since all the coefficient has a p-value smaller than 0.05, we think this model is significant with a linear formula:  
 $Sales = 3.7202 +0.0524*Released+0.0006*UnitsSold+1.0401*MeanSale-0.05423*Year$
 
+In the Residuals vs Fitted graph, the residuals are cluttered around the 0 line. This suggests that the assumption that the relationship is linear is reasonable. 
+For the Normal Q-Q graph, the majority follow a linear relationship. However, starting at the theoretical category of 2, the points start to deviate from a linear relationship. This is somewhat concerning that that it can be assumed the data is not normally distributed. 
+In the Scale-Location graph, this represent whether or not the residuals are spread equally along the ranges of the predictors. Because the points are clustered into two groups, it may seem that the residuals are not equal in variance, however, because the red smooth line has a fairly equal slope i.e. a horizontal slope, it can be assumed that the residuals appear to be randomly spread.
+However, in the Residuals vs Leverage graph, because all points are below the Cook's Distance line (although point 2 is very close) there are no influential cases. Therefore, there are no outliers that are significantly influential. 
+```{r}
+plot(MLR)
+abline(MLR)
+```
 
+Time series graph of platforms' global sales in millions. 
+```{r}
+vgsales2 <- vgsales1 %>%
+  group_by(Platform, Year) %>%
+  summarise(total=sum(Global_Sales))
+vgsales2
+time <- ggplot(data=vgsales2, aes(x=Year, y=total, col=Platform)) +geom_line()
+time
+```
 
-
-
-
-
-
-Seeing which platform had the greatest sale and within each platform what was the greatest sold game 
+Seeing which platform had the greatest sale globally. 
 ```{r}
 vgsales %>%
   group_by(Platform) %>%
@@ -193,8 +206,7 @@ vgsales %>%
   theme(axis.text.x=element_text(angle=60,hjust=1)) 
 ```
 
-
-Most Sold Game
+Most Sold Game in terms of Global Sales
 ```{r}
   vgsales %>%
   group_by(Platform) %>%
