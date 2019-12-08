@@ -177,8 +177,12 @@ Combining the two graphs above, we want to see the global sales over time for ea
 vgsales2 <- vgsales1 %>%
   group_by(Platform, Year) %>%
   summarise(total=sum(Global_Sales))
-time <- ggplot(data=vgsales2, aes(x=Year, y=total, col=Platform)) +geom_line() + facet_wrap(vars(Platform))
+time <- ggplot(data=vgsales2, aes(x=Year, y=total, col=Platform)) +geom_line()
 time
+```
+```{r}
+ind_time<- time + facet_wrap(vars(Platform))
+ind_time
 ```
 
 However, since we are analyzing possible variables that may influence video game sales, here is one more variable which might be a factor. By calculating the mean sales by each platform, we may find it influencial to games total sales.
