@@ -180,7 +180,7 @@ vgsales2 <- vgsales1 %>%
 time <- ggplot(data=vgsales2, aes(x=Year, y=total, col=Platform)) +geom_line()
 time
 ```
-```{r}
+```{r, fig.height = 10}
 ind_time<- time + facet_wrap(vars(Platform)) +
   theme(axis.text.x=element_text(angle=60,hjust=1))
 ind_time
