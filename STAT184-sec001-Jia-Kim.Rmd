@@ -149,7 +149,39 @@ vgconsole %>%
   select(PlatformAbb,Released,UnitsSold)
 head(vgconsole)
 ```
-Since we are analyzing possible variables that may influence video game sales, here is one more variable which might be a factor. By calculating the mean sales by each platform, we may find it influencial to games total sales.
+
+We want to see the basic relationship among the platforms in global sales. This helps build a fundamental idea and question for the rest of the analysis discussed further. This first graph is to see which platform had the greatest sale globally. 
+```{r}
+vgsales %>%
+  group_by(Platform) %>%
+  filter(rank(desc(Global_Sales))==1)%>%
+  ggplot(aes(x=reorder(Platform,-Global_Sales),y=Global_Sales ))+
+  geom_bar(stat='identity',position='stack', width=.9)+
+  theme(axis.text.x=element_text(angle=60,hjust=1)) 
+```
+
+And see which game had the greatest global sales.
+```{r}
+  vgsales %>%
+  group_by(Platform) %>%
+  filter(rank(desc(Global_Sales))==1)%>%
+  ggplot(aes(x=reorder(Name,-Global_Sales),y=Global_Sales ))+
+  geom_bar(stat='identity',position='stack', width=.9) +
+  theme(axis.text.x=element_text(angle=60,hjust=1)) +
+  xlab("Game Title") +
+  ylab("Global Sales")
+```
+
+Combining the two graphs above, we want to see the global sales over time for each platform that includes all of the released titles. A time series graph of platforms' global sales in millions is shown below. 
+```{r}
+vgsales2 <- vgsales1 %>%
+  group_by(Platform, Year) %>%
+  summarise(total=sum(Global_Sales))
+time <- ggplot(data=vgsales2, aes(x=Year, y=total, col=Platform)) +geom_line() + facet_wrap(vars(Platform))
+time
+```
+
+However, since we are analyzing possible variables that may influence video game sales, here is one more variable which might be a factor. By calculating the mean sales by each platform, we may find it influencial to games total sales.
 ```{r}
 MeanbyPlatform<-
 vgsales1 %>%
@@ -186,35 +218,7 @@ plot(MLR)
 abline(MLR)
 ```
 
-Time series graph of platforms' global sales in millions. 
-```{r}
-vgsales2 <- vgsales1 %>%
-  group_by(Platform, Year) %>%
-  summarise(total=sum(Global_Sales))
-vgsales2
-time <- ggplot(data=vgsales2, aes(x=Year, y=total, col=Platform)) +geom_line()
-time
-```
 
-Seeing which platform had the greatest sale globally. 
-```{r}
-vgsales %>%
-  group_by(Platform) %>%
-  filter(rank(desc(Global_Sales))==1)%>%
-  ggplot(aes(x=reorder(Platform,-Global_Sales),y=Global_Sales ))+
-  geom_bar(stat='identity',position='stack', width=.9)+
-  theme(axis.text.x=element_text(angle=60,hjust=1)) 
-```
 
-Most Sold Game in terms of Global Sales
-```{r}
-  vgsales %>%
-  group_by(Platform) %>%
-  filter(rank(desc(Global_Sales))==1)%>%
-  ggplot(aes(x=reorder(Name,-Global_Sales),y=Global_Sales ))+
-  geom_bar(stat='identity',position='stack', width=.9) +
-  theme(axis.text.x=element_text(angle=60,hjust=1)) +
-  xlab("Game Title") +
-  ylab("Global Sales")
-```
+
 
