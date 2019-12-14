@@ -19,7 +19,7 @@ library(lubridate)
 library(leaflet)
 library(rvest)
 library(readr)
-
+install.packages("party")
 ```
 ### Project goal
 We start with a research question:  
@@ -191,12 +191,13 @@ head(vgsales1)
 
 We want to see the basic relationship among the platforms in global sales. This helps build a fundamental idea and question for the rest of the analysis discussed further. This first graph is to see which platform had the greatest sale globally. 
 ```{r}
-vgsales1 %>%
+Platforms <- vgsales1 %>%
   group_by(Platform) %>%
   filter(rank(desc(Global_Sales))==1)%>%
   ggplot(aes(x=reorder(Platform,-Global_Sales),y=Global_Sales ))+
   geom_bar(stat='identity',position='stack', width=.9)+
   theme(axis.text.x=element_text(angle=60,hjust=1)) 
+Platforms
 ```
 
 And see which game had the greatest global sales.
@@ -207,16 +208,17 @@ And see which game had the greatest global sales.
   ggplot(aes(x=reorder(Name,-Global_Sales),y=Global_Sales ))+
   geom_bar(stat='identity',position='stack', width=.9) +
   theme(axis.text.x=element_text(angle=60,hjust=1)) +
-  xlab("Game Title") +
-  ylab("Global Sales")
+  xlab("Game Title") + ylab("Global Sales")
 ```
+
+
 
 Combining the two graphs above, we want to see the global sales over time for each platform that includes all of the released titles. A time series graph of platforms' global sales in millions is shown below. 
 ```{r}
 vgsales2 <- vgsales1 %>%
   group_by(Platform, Year) %>%
   summarise(total=sum(Global_Sales))
-time <- ggplot(data=vgsales2, aes(x=Year, y=total, col=Platform)) +geom_line()
+time <- ggplot() +geom_line(data=vgsales2, aes(x=Year, y=total, col=Platform)) 
 time
 ```
 ```{r, fig.height = 10}
@@ -247,6 +249,35 @@ abline(MLR)
 ```
 
 
+```{r}
+mod1<-party::ctree(Global_Sales~Released+UnitsSold+Year, data=vgsales1)
+plot(mod1, type="simple")
+  
 
+vgsales%>%
+  mutate(probability = as.numeric(predict(mod1)),
+         likelihood = 
+           ifelse(Global_Sales,
+                  probability,
+                  1-probability)) %>%
+  summarise(log_likelihood=sum(log(likelihood)))
+
+mod2 <- party::ctree(
+  Global_Sales~Released+Year, data=vgsales1
+)
+plot(mod2, type="simple")
+
+vgsales%>%
+  mutate(probability = as.numeric(predict(mod2)),
+         likelihood = 
+           ifelse(Global_Sales,
+                  probability,
+                  1-probability)) %>%
+  summarise(log_likelihood=sum(log(likelihood)))
+```
+With the features we have for analysis, a loglikelihood function was implemented to see which model estimated Global sales more accurately. Although the loglikelihood output for both models do not have a significant increase, it can be noted that the Units sold for a platform and game has no influence in global sales. The main features that influence the global sales was the years for both platform and game release. There may be an unknown factor during those years that increased global sales which would be a further research question. 
+
+
+In conclusion, we were able to analyze the platform and game as well as find a regression for our model of Global Sales. Althought the features that affected global sales were found, because of its lack of normality, the model is not the most accuracte. This may be due to the lack of features for analysis that would influence global sales such as the average age of target customers for each genre, game, and platform, or the gender, and the location of country with greatest sales i.e. Microsoft (Xbox) failed in Japan.
 
 
