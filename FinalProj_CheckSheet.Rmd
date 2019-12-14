@@ -59,14 +59,16 @@ output:  html_notebook
 
 
 (A) .Rmd Line number(s) for use of mulitple different geoms:  
+198,208, 219
 
 (B) .Rmd Line number(s) for use of multiple aesthetics:  
-
+197,198,199,219,222,223
 (C) .Rmd Line number(s) for use of layered graphics:  
 
 (D) .Rmd Line number(s) for use of leaflet maps:  
 
-(E) .Rmd Line number(s) for use of decision tree or dendogram results:    
+(E) .Rmd Line number(s) for use of decision tree or dendogram results:   
+253-276
 
 
 
