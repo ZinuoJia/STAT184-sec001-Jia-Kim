@@ -1,6 +1,6 @@
 ---
 title: 'Final Project: Guidance Document'
-author: "Author Name(s)"
+author: "Zinuo Jia, Alexander Kim"
 date: "Due December 17, 2019"
 output:  html_notebook
 ---
@@ -18,10 +18,10 @@ output:  html_notebook
 *Description: (1) Analysis includes at least two different data sources. (2) Primary data source may NOT be loaded from an R package--though supporting data may. (3) Access to all data sources is contained within the analysis. (4) Imported data is inspected at beginning of analysis using one or more R functions: e.g., str, glimpse, head, tail, names, nrow, etc*
 
 (A) .Rmd Line numbers where at least two different data sources are imported:  
-
+    45-62
 
 (B) .Rmd Line numbers for inspecting data intake:  
-
+    68-69,75,90-91
 
 ### Data Wrangling (5 out of 8 required)
 
@@ -29,19 +29,19 @@ output:  html_notebook
 
 
 (A) .Rmd Line number(s) for general data wrangling: 
-
+80-82,95-99,119-122,127-129 and more.
 
 (B) .Rmd Line number(s) for a join operation: 
-
+163-169,182-188
 
 (C) .Rmd Line number(s) for a spread or gather operation (or equivalent):
 
 
 (D) .Rmd Line number(s) for use of regular expressions: 
-
+104-109
 
 (E) .Rmd Line number(s) for use of reduction and/or transformation functions: 
-
+144-151,172-179
 
 (F) .Rmd Line number(s) for use of user-defined functions: 
 
@@ -50,7 +50,7 @@ output:  html_notebook
 
 
 (H) .Rmd Line number(s) for use of machine learning (not "wrangling" but scored here): 
-
+231-236
 
 
 ### Data Visualization (3 of 5 required)
