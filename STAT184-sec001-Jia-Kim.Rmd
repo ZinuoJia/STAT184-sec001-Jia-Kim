@@ -19,7 +19,7 @@ library(lubridate)
 library(leaflet)
 library(rvest)
 library(readr)
-install.packages("party")
+library(party)
 ```
 ### Project goal
 We start with a research question:  
@@ -249,11 +249,11 @@ abline(MLR)
 ```
 
 
-```{r}
+```{r,fig.width=15}
 mod1<-party::ctree(Global_Sales~Released+UnitsSold+Year, data=vgsales1)
 plot(mod1, type="simple")
-  
-
+```
+```{r}
 vgsales%>%
   mutate(probability = as.numeric(predict(mod1)),
          likelihood = 
@@ -261,12 +261,14 @@ vgsales%>%
                   probability,
                   1-probability)) %>%
   summarise(log_likelihood=sum(log(likelihood)))
-
+```
+```{r,fig.width=15}
 mod2 <- party::ctree(
   Global_Sales~Released+Year, data=vgsales1
 )
 plot(mod2, type="simple")
-
+```
+```{r}
 vgsales%>%
   mutate(probability = as.numeric(predict(mod2)),
          likelihood = 
